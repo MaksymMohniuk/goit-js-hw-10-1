@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+
+  .timer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .field {
+    margin: 0 10px;
+    text-align: center;
+  }
+
+  .value {
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+  }
+
+  .label {
+    font-size: 1em;
+    display: block;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  button[data-start] {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+
+  button[data-start]:hover {
+    background-color: #0056b3;
+  }
