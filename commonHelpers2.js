@@ -1,0 +1,2 @@
+import"./assets/styles-dea62f14.js";import"./assets/vendor-651d7991.js";const o=document.querySelector(".form"),n=document.querySelector('.form button[type="submit"]');n.addEventListener("submit",c);function c(t){t.preventDefault(),o=t.target;let r=o.elements.delay.value;new Promise((e,s)=>{setTimeout(()=>{isSuccess?e("Success! Value passed to resolve function"):s("Error! Error passed to reject function")},r)}).then(e=>console.log(e)).catch(e=>console.log(e)),form.reset()}
+//# sourceMappingURL=commonHelpers2.js.map
