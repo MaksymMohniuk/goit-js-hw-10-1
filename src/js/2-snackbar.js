@@ -4,21 +4,37 @@ import 'izitoast/dist/css/iziToast.min.css';
 const formRef = document.querySelector('.form');
 const buttonRef = document.querySelector('.form button[type="submit"]');
 
-buttonRef.addEventListener('submit', createPromise);
+buttonRef.addEventListener('click', createPromise);
 
 function createPromise(e) {
   e.preventDefault();
-  formRef = e.target;
-  let delay = formRef.elements.delay.value;
-  const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (isSuccess) {
-        resolve('Success! Value passed to resolve function');
-      } else {
-        reject('Error! Error passed to reject function');
-      }
-    }, delay);
-  });
-  promise.then(value => console.log(value)).catch(error => console.log(error));
-  form.reset();
+  let delay = Number(formRef.elements.delay.value);
+  const state = formRef.elements.state.value;
+  let promise;
+
+  if (state === 'fulfilled') {
+    promise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve(`${delay}ms`), delay);
+    });
+  } else {
+    promise = new Promise((resolve, reject) => {
+      setTimeout(() => reject(new Error(`${delay}ms`)), delay);
+    });
+  }
+  promise
+    .then(message => {
+      iziToast.success({
+        title: 'Success',
+        message: `✅ Fulfilled promise in: ${message}`,
+        position: 'topRight',
+      });
+    })
+    .catch(error => {
+      iziToast.error({
+        title: 'Error',
+        message: `❌ Rejected promise in: ${error.message}`,
+        position: 'topRight',
+      });
+    });
+  formRef.reset();
 }
